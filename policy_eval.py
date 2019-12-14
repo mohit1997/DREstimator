@@ -5,8 +5,8 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import json
 
-param_file = 'vowel.params'
-filepath = 'vowel.data'
+param_file = 'glass.params'
+filepath = 'glass.data'
 
 np.random.seed(0)
 
@@ -102,6 +102,12 @@ def IPS(features, clf, polabels, num_classes):
   loss = [num_classes*(1 - polabels[i, a]) if polabels[i, a] != -1 else 0 for i,a in enumerate(actions)]
   return np.mean(loss)
 
+def WIPS(features, clf, polabels, num_classes):
+  actions = clf.predict(features)
+  loss = [num_classes*(1 - polabels[i, a]) for i,a in enumerate(actions) if polabels[i, a] != -1]
+  loss2 = [num_classes for i in range(len(loss))]
+  return np.mean(loss)/np.mean(loss2)
+
 def DR(features, clf, polabels, num_classes, estimators):
   actions = clf.predict(features)
   loss = [num_classes*(1 - polabels[i, a] - prob2loss(estimators[a].predict_proba(features[i:i+1]))) + prob2loss(estimators[a].predict_proba(features[i:i+1])) 
@@ -109,6 +115,16 @@ def DR(features, clf, polabels, num_classes, estimators):
   else  prob2loss(estimators[a].predict_proba(features[i:i+1]))
   for i,a in enumerate(actions)]
   return np.mean(loss)
+
+# def WDR(features, clf, polabels, num_classes, estimators):
+#   actions = clf.predict(features)
+#   loss = [num_classes*(1 - polabels[i, a] - prob2loss(estimators[a].predict_proba(features[i:i+1])))
+#   for i,a in enumerate(actions)
+#   if polabels[i, a] != -1 
+#   ]
+#   loss2 = [num_classes for i in range(len(loss))]
+#   loss3 = [prob2loss(estimators[a].predict_proba(features[i:i+1])) for i,a in enumerate(actions)]
+#   return np.mean(loss)/np.mean(loss2) + np.mean(loss3)
 
 X, Y, OhotY, num_classes = parse_data(param_file, filepath)
 
