@@ -21,7 +21,7 @@ bash get_data.sh
 1. Choosing the dataset, edit following lines in file `policy_eval.py`
 ```python
 param_file = 'glass.params' # this file would be generated
-filepath = 'glass.data' # Can be replaced with vowel.data, yeast.data or glass.data
+filepath = 'glass.data' # Can be replaced with vowel.data, yeast.data or ecoli.data
 ```
 2. Run `python policy_eval.py`
 
@@ -29,7 +29,7 @@ filepath = 'glass.data' # Can be replaced with vowel.data, yeast.data or glass.d
 1. Choosing the dataset, edit following lines in file `policy_opt.py`
 ```python
 param_file = 'glass.params' # this file would be generated
-filepath = 'glass.data' # Can be replaced with vowel.data, yeast.data or glass.data
+filepath = 'glass.data' # Can be replaced with vowel.data, yeast.data or ecoli.data
 ```
 2. Run `python policy_opt.py`
 
