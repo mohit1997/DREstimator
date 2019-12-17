@@ -6,7 +6,7 @@
 3. Sklearn
 
 
-### Download and install dependencies
+### Download Repository
 Download:
 ```bash
 git clone https://github.com/mohit1997/DREstimator.git
