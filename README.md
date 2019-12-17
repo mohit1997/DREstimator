@@ -1,5 +1,7 @@
 # DREstimator
 
+Project for course CS498RL offered by Prof. Nan Jiang at UIUC. The code is a reimplementation of the paper [Doubly Robust Policy Evaluation and Learning](https://arxiv.org/pdf/1103.4601.pdf).
+
 ## Requirements
 1. Python3 (<= 3.6.8)
 2. Numpy
